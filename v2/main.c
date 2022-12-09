@@ -146,6 +146,7 @@ int main()
                 files++;
                 printf("File %3d: %s \n", files, entry->d_name);
              };
+             printf("Enter with the stock who you want analyse: ");
              scanf("%s" , &stock);
              //Reading Stock Data
              strcat(directory , "/");
@@ -157,7 +158,7 @@ int main()
              }
              else{
                 //Declaring Statments
-                char buffer[1024];
+                char buffer[1000000];
                 int row = 0;
                 int column = 0;
                 /**
@@ -165,34 +166,30 @@ int main()
                  * 1- the name of vector to save string , in this case, buffer
                  * 2- The maxium of characters to read
                  * 3- Where data come from, in this case, from fp FILE struct type pointer***/
-                while (fgets(buffer,1024,fp))
+                while (fgets(buffer,1000000,fp))
                 {
-                    column = 0;
+                    int column = 0;
                     row++;
+                    int num_rows = 0;
+                    printf("Type the number of rows of dataset who your need to read: ");
+                    scanf("%d" , &num_rows);
+                    int i;
+                    
+                    for(i = 0 ; i <= num_rows ; i++){
+                        
+                        if (row == i) continue;
+                        //breaks string str into a series of tokens using the delimiter ',' ; because our program read CSV
+                        // CSV is comma separeted values
+                        char* value = strtok(buffer,",");
+                         while(value){
+                            printf("\t%s" , value);
+                            value = strtok(NULL, ",");
+                            column ++;
+                         };
 
-                    if (row == 10) continue;
-
-                    //breaks string str into a series of tokens using the delimiter ',' ; because our program read CSV
-                    // CSV is comma separeted values
-                    char* value = strtok(buffer,",");
-
-                    while(value){
-                        if (column == 0){
-                            printf("Name:");
-                        }
-                        if(column == 1){
-                            printf("\tAccount No.:");
-                        }
-                        if(column == 2){
-                            printf("\tAmoun :t");
-                        }
-
-                        printf("%s" , value);
-                        value = strtok(NULL, ",");
-                        column ++;
-
-                    };
                     printf("\n");
+                    };
+                    
                     //Close the file
                     fclose(fp);
                 };
