@@ -59,6 +59,31 @@ void Array_sort(int *arr , int n)
 
 }
 
+void Array_sort_desc(int *arr , int n)
+{
+    //Receive an pointer to array and reorder this 
+
+
+    // Declarando vari�veis locais
+    int i=0 , j=0 , temp=0;
+
+
+    // Comando FOR para reposicionar os elementos da array:
+    for(i=0 ; i<n ; i++)
+    {
+        for(j=0 ; j< n-1 ; j++)
+        {
+            if(arr[j]<arr[j+1])
+            {
+                temp        = arr[j];
+                arr[j]    = arr[j+1];
+                arr[j+1]  = temp;
+            }
+        }
+    }
+
+}
+
 // Função MEDIANA:
 float Find_median(float array[] , int n)
 {
@@ -76,23 +101,6 @@ float Find_median(float array[] , int n)
 }
 
 //Função VARIANCIA
-// float Array_variance(float array[] , int n, float media, float sum)
-// {
-
-//     float x[n];
-//     float variance = 0;
-
-
-//     for (int i = 0; i < n; i++)
-//     {
-//         sum = sum + pow((array[i] - media), 2);
-//     }
-//     variance = sum / (float)n;
-
-//     return variance;
-// }
-
-//Função VARIANCIA - Essa ta funcionando, a de cima n consegui resolver.
 float Array_variance( float array[], int n )
 {
     float sum = 0.0;
@@ -112,7 +120,7 @@ float Array_variance( float array[], int n )
 //Função DESVIO PADRAO - Falta testar essa
 float Array_deviation(float variance)
 {
-    float std_deviation;
+    float std_deviation = 0;
 
 
     std_deviation = sqrt(variance);
@@ -123,7 +131,7 @@ float Array_deviation(float variance)
 int main()
 {
   setlocale(LC_ALL, "Portuguese");
-  Market estruturadados[100];
+  Market estruturadados[5126];
   
 	char nomearquivo[100];
   char pasta[100] = "";
@@ -139,17 +147,17 @@ int main()
 
 	else {
 		
-		char buffer[1024];
+		char buffer[5125];
 
 		int row = 0;
 		int column = 0;
     int contador = 0;
     float valorf = 0;
 
-		while (fgets(buffer, 1024, arquivo)) {
+		while (fgets(buffer, sizeof(buffer), arquivo)) {
 			column = 0;
       row++;
-			if (row == 5)
+			if (row == 5) // Se quiser printar o .csv todo no caso o csv (A.csv), digite: 5126
 				break;
 
       if (row == 1) continue;
@@ -200,13 +208,15 @@ int main()
   printf("ROW:%d",row);
   float sumf[row-2];
     
-  for(i = 1; i <= row-2; i++) {
+  for(i = 1; i <= row-2; i++) { // Aqui é um exemplo de codigo isolando a coluna open do .csv
     sumf[i] = estruturadados[i].open;
     soma = soma + sumf[i];
     printf("\nOPEN %d: %f",i,sumf[i]);
     }
   
   printf("\nSOMA: %f",soma);
+
+
   }
 	fclose(arquivo);
 	return 0;
