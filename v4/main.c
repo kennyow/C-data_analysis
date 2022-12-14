@@ -239,6 +239,7 @@ int main()
       case 1:
         for(i = 1; i <= row-2; i++) {
           arrayf[i-1] = estruturadados[i].open;
+          printf("%.2f" ,arrayf[i-1]);
           }
         Analise_geral(arrayf, row-2);
         break;
