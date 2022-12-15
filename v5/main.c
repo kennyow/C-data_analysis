@@ -24,7 +24,7 @@ int main(){
   char path[256];
   strcpy(path, directory);
   printf("%s" , path);
-  printf("\nIN PATH: %s\n------------------" , path); 
+  printf("\nIN PATH: %s\n------------------" , path);
 
   //READING FILE! BUGS HERE!
   Market estruturadados[100];
@@ -40,10 +40,9 @@ int main(){
     }
 
 	else {
-    
-		
+
+
     do{
-      char buffer[1000];
       char buffer[1000];
 		  int row = 0;
 		  int column = 0;
@@ -65,24 +64,24 @@ int main(){
 
       if (numcoluna == 7)
           return 0;
-  
+
       printf("\nEnter with the num of rows who you want to read:");
       scanf("%d", &rowmax);
-      
+
       while (fgets(buffer, sizeof(buffer), fp)) {
 
   			column = 0;
         row++;
-        
+
   			if (row == rowmax)
   				break;
-  
+
         if (row == 1) continue;
-        
+
   			char* value = strtok(buffer, ", ");
-  
+
   			while (value) {
-          
+
           if (numcoluna== 0){
             strcpy(estruturadados[row-1].date , value);
           }
@@ -116,7 +115,7 @@ int main(){
         column++;
         contador = 0;
   		}
-      
+
     int i;
     float arrayf[row-2];
 
@@ -125,7 +124,7 @@ int main(){
       printf("OPENING DATA : \n");
         for(i = 1; i <= row-2; i++) {
           arrayf[i-1] = estruturadados[i].open;
-          
+
           }
         for(int j = 0; j <= row ; j++){
           printf("%f\n" , arrayf[j]);
@@ -178,7 +177,7 @@ int main(){
       }
     printf("Do you want to continue? \n[1]-Yes\n[0]-No\n->");
     scanf("%d" , resp);
-   
+
     }while(resp != 0);
   };
     return 0;
