@@ -1,0 +1,10 @@
+No Windows: gcc main.c reading.c measures.c dsfuncs.c -o main
+
+No linux : gcc main.c reading.c measures.c dsfuncs.c -o main -lm
+           chmod +x main
+           
+A pasta data/stocks é onde fica os .csv ou dados que serão executados.
+Deve ser digitado "data/stocks" para aparecer os .csv
+Depois deve ser digitado o nome do arquivo respectivamente por exemplo C.csv
+Após isso basta escolher as operacoes desejadas para manipular o arquivo assim como a quantidade
+de linhas que deseja ver.
